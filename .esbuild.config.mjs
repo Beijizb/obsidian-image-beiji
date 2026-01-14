@@ -1,6 +1,14 @@
 import esbuild from "esbuild";
 import process from "process";
-import builtins from 'builtin-modules'
+
+// 直接写死 Node.js 内置模块列表（替代 builtin-modules 包）
+const builtins = [
+  'assert', 'buffer', 'child_process', 'cluster', 'console', 'constants',
+  'crypto', 'dgram', 'dns', 'domain', 'events', 'fs', 'http', 'https',
+  'module', 'net', 'os', 'path', 'process', 'punycode', 'querystring',
+  'readline', 'repl', 'stream', 'string_decoder', 'timers', 'tls', 'tty',
+  'url', 'util', 'v8', 'vm', 'zlib'
+];
 
 const banner =
 `/*
@@ -31,7 +39,7 @@ esbuild.build({
     '@lezer/common',
     '@lezer/highlight',
     '@lezer/lr',
-    ...builtins
+    ...builtins // 使用写死的内置模块列表
   ],
   format: 'cjs',
   watch: !prod,
