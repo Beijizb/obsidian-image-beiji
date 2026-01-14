@@ -1,0 +1,41 @@
+name: 编译Obsidian插件
+
+# 触发条件：代码推送到main分支时自动执行
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 用云端的Ubuntu环境（也可以选windows-latest）
+    
+    steps:
+      # 步骤1：检出GitHub仓库的代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        
+      # 步骤2：安装Node.js（和本地依赖版本一致）
+      - name: 安装Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # 对应package.json中的Node版本
+          cache: 'npm'        # 缓存npm依赖，加速构建
+          
+      # 步骤3：安装插件依赖
+      - name: 安装依赖
+        run: npm install
+        
+      # 步骤4：编译插件（生成main.js）
+      - name: 编译插件
+        run: npm run build
+        
+      # 步骤5：打包编译结果（把main.js和manifest.json打包成zip）
+      - name: 打包结果
+        run: zip -r obsidian-image-beiji.zip main.js manifest.json
+        
+      # 步骤6：上传打包文件，供你下载
+      - name: 上传编译结果
+        uses: actions/upload-artifact@v4
+        with:
+          name: obsidian-image-beiji
+          path: obsidian-image-beiji.zip
