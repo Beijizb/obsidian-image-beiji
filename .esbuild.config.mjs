@@ -28,6 +28,7 @@ esbuild.build({
   external: [
     'obsidian',
     'electron',
+    'sharp', 
     '@codemirror/autocomplete',
     '@codemirror/collab',
     '@codemirror/commands',
