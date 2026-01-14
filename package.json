@@ -1,0 +1,22 @@
+{
+  "name": "obsidian-auto-upload-image",
+  "version": "1.0.0",
+  "description": "自动上传图片到CloudFlare ImgBed并转换为无损WebP",
+  "main": "main.js",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "dev": "node esbuild.config.mjs --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "@types/sharp": "^0.32.0",
+    "esbuild": "^0.19.0",
+    "obsidian": "^1.4.0",
+    "typescript": "^5.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0",
+    "sharp": "^0.32.6"
+  }
+}

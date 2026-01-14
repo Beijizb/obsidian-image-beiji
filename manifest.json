@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-auto-upload-image",
+  "name": "Auto Upload Image",
+  "version": "1.0.0",
+  "minAppVersion": "0.16.0",
+  "description": "自动上传笔记中的图片到CloudFlare ImgBed，并替换为直链",
+  "author": "你的名字",
+  "authorUrl": "",
+  "isDesktopOnly": true
+}
