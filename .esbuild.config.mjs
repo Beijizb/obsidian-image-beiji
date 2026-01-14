@@ -42,7 +42,6 @@ esbuild.build({
     ...builtins // 使用写死的内置模块列表
   ],
   format: 'cjs',
-  watch: !prod,
   target: 'es2018',
   logLevel: "info",
   sourcemap: prod ? false : 'inline',
